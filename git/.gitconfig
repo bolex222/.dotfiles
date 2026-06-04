@@ -1,0 +1,51 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Basile Lecouturier
+	email = 50240788+bolex222@users.noreply.github.com
+# Please adapt and uncomment the following lines:
+#	name = Basile LECOUTURIER
+#	email = 50240788+bolex222@users.noreply.github.com
+[core]
+	excludesfile = ~/.gitignore
+	editor = nvim
+[alias]
+  ca = "!git add . && git commit -m "
+  s = status
+  st = status
+  c = commit
+  sw = switch
+  swc = switch -c
+  br = branch 
+  prepare = "!nvim $(git rev-parse --show-toplevel)/._prepare_commit_message"
+  clean-prepare = "!echo \"\" > $(git rev-parse --show-toplevel)/._prepare_commit_message"
+  commit-prepared = "!echo \"\" >> $(git rev-parse --show-toplevel)/._prepare_commit_message && git commit -t $(git rev-parse --show-toplevel)/._prepare_commit_message" 
+  cp = commit-prepared
+
+  # what would be pushed
+  outgoing = log @{upstream}..HEAD
+  outgoing = log @{u}..
+
+  # push upstream current branch
+  po = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+
+  # List all commits (on this branch) made by me
+  mycommits = log --author=\".*[Jj]an\\s*[Kk]rag.*\"
+
+; [includeIf "gitdir:~/Projects/antinomy/"]
+; 	path = ~/Projects/antinomy/.gitconfig
+; [includeIf "gitdir:~/Projects/27b/"]
+; 	path = ~/Projects/27b/.gitconfig
+; [includeIf "gitdir:~/Projects/upperquad/"]
+; 	path = ~/Projects/upperquad/.gitconfig
+
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+
+
+[push]
+	autoSetupRemote = true
+[init]
+	defaultBranch = main
