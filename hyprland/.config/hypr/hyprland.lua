@@ -29,9 +29,10 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal    = "ghostty"
-local fileManager = "nautilus"
+local fileManager = "dolphin"
 local browser     = "firefox"
-local menu        = "wofi --show drun"
+-- local menu        = "wofi --show drun"
+local menu        = "hyprlauncher"
 local emoji       = "hypremoji"
 
 
@@ -105,6 +106,16 @@ hl.config({
 		allow_tearing    = false,
 
 		layout           = "dwindle",
+	},
+
+	cursor = {
+			no_hardware_cursors = true, -- prevent blinking cursor because of nvidia
+			enable_hyprcursor = false, -- prevent blinking cursor because of nvidia
+	},
+
+	misc = {
+			always_follow_on_dnd = true, -- prevent blinking cursor because of nvidia
+			layers_hog_keyboard_focus = true, -- prevent blinking cursor because of nvidia
 	},
 
 	decoration = {

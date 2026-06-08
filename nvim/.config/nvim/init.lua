@@ -3,7 +3,8 @@ vim.pack.add({
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/projekt0n/github-nvim-theme",
 	"https://github.com/ibhagwan/fzf-lua",
-	"https://github.com/folke/lazydev.nvim"
+	"https://github.com/folke/lazydev.nvim",
+	"https://github.com/christoomey/vim-tmux-navigator",
 })
 
 require('lazydev').setup()
@@ -75,12 +76,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 
 })
+
+vim.opt.clipboard:append("unnamedplus")
+
 vim.keymap.set('n', "<leader>l", vim.lsp.buf.format)
-vim.keymap.set('n', "<leader>en", vim.diagnostic.goto_next)
-vim.keymap.set('n', "<leader>ep", vim.diagnostic.goto_prev)
+vim.keymap.set('n', "<leader>en", function() vim.diagnostic.jump({ count = 1, float = true }) end)
+vim.keymap.set('n', "<leader>ep", function() vim.diagnostic.jump({ count = -1, float = true }) end)
 vim.keymap.set('n', "<leader>i", vim.lsp.buf.hover)
 vim.keymap.set('n', "<leader>r", vim.lsp.buf.rename)
 vim.keymap.set('n', "<leader>gd", vim.lsp.buf.definition)
 vim.keymap.set('n', "<leader>ff", require("fzf-lua").files)
 vim.keymap.set('n', "<leader>fg", require("fzf-lua").live_grep)
 vim.keymap.set('n', "<leader>fr", require("fzf-lua").resume)
+vim.keymap.set('x', "<leader>y", '"*y', { noremap = true })
+vim.keymap.set('x', "<leader>p", '"*P', { noremap = true })
