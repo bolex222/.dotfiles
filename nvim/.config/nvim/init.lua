@@ -77,7 +77,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 })
 
-vim.opt.clipboard:append("unnamedplus")
+vim.opt.clipboard = "unnamedplus"
 
 vim.keymap.set('n', "<leader>l", vim.lsp.buf.format)
 vim.keymap.set('n', "<leader>en", function() vim.diagnostic.jump({ count = 1, float = true }) end)
@@ -88,5 +88,5 @@ vim.keymap.set('n', "<leader>gd", vim.lsp.buf.definition)
 vim.keymap.set('n', "<leader>ff", require("fzf-lua").files)
 vim.keymap.set('n', "<leader>fg", require("fzf-lua").live_grep)
 vim.keymap.set('n', "<leader>fr", require("fzf-lua").resume)
-vim.keymap.set('x', "<leader>y", '"*y', { noremap = true })
-vim.keymap.set('x', "<leader>p", '"*P', { noremap = true })
+vim.keymap.set({ 'v', 'x' }, "<leader>y", '"+y', { noremap = true })
+vim.keymap.set('x', "<leader>p", '"+P', { noremap = true })
