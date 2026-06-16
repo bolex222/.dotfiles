@@ -22,9 +22,21 @@ vim.g.mapleader = " "
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 vim.o.autocomplete = true
 
+vim.lsp.config('arduino_language_server', {
+	cmd = {
+		"arduino-language-server",
+		"-clangd", "/usr/bin/clangd",
+		"-cli", "/usr/bin/arduino-cli",
+		"-cli-config", "$HOME/.arduino15/arduino-cli.yaml",
+		"-fqbn", "arduino:avr:uno"
+	},
+	filetypes = { "arduino" },
+})
+
 vim.lsp.enable({
 	"lua_ls",
 	"clangd",
+	"arduino_language_server",
 })
 
 -- enable completion with lsp
@@ -90,3 +102,4 @@ vim.keymap.set('n', "<leader>fg", require("fzf-lua").live_grep)
 vim.keymap.set('n', "<leader>fr", require("fzf-lua").resume)
 vim.keymap.set({ 'v', 'x' }, "<leader>y", '"+y', { noremap = true })
 vim.keymap.set('x', "<leader>p", '"+P', { noremap = true })
+
