@@ -5,6 +5,7 @@ vim.pack.add({
 	"https://github.com/ibhagwan/fzf-lua",
 	"https://github.com/folke/lazydev.nvim",
 	"https://github.com/christoomey/vim-tmux-navigator",
+	"https://github.com/L3MON4D3/LuaSnip",
 })
 
 require('lazydev').setup()
@@ -14,7 +15,9 @@ vim.o.relativenumber = true
 vim.o.wrap = false
 vim.o.swapfile = false
 vim.o.tabstop = 4
-vim.o.signcolumn = "yes" -- prevent layout to shift while writing
+vim.o.expandtab = true
+vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
+vim.o.shiftwidth = 4 -- Number of spaces inserted when indentingvim.o.signcolumn = "yes" -- prevent layout to shift while writing
 vim.o.winborder = "rounded"
 vim.cmd.colorscheme("github_dark_dimmed")
 vim.cmd.hi("statusline guibg=NONE")
@@ -102,4 +105,3 @@ vim.keymap.set('n', "<leader>fg", require("fzf-lua").live_grep)
 vim.keymap.set('n', "<leader>fr", require("fzf-lua").resume)
 vim.keymap.set({ 'v', 'x' }, "<leader>y", '"+y', { noremap = true })
 vim.keymap.set('x', "<leader>p", '"+P', { noremap = true })
-
