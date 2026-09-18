@@ -30,10 +30,13 @@ hl.monitor({
 -- Set programs that you use
 local terminal       = "ghostty"
 local fileManager    = "nautilus"
-local browser        = "firefox"
+-- local browser        = "firefox"
 -- local menu        = "wofi --show drun"
-local menu           = "hyprlauncher"
-local emoji          = "hypremoji"
+-- local menu           = "hyprlauncher"
+local menu           =
+"rofi -show drun -theme ~/.config/rofi/launchers/type-1/style-5.rasi -calc-command \"echo -n '{result}' | wl-copy\"  -no-show-match -no-sort"
+
+-- local emoji          = "hypremoji"
 local keyboardDevice = " zsa-technology-labs-voyager"
 
 -------------------
@@ -49,6 +52,7 @@ hl.on("hyprland.start", function()
     -- hl.exec_cmd(terminal)
     -- hl.exec_cmd("nm-applet")
     hl.exec_cmd("waybar & hyprpaper")
+    hl.exec_cmd("wl-paste --watch cliphist store")
     -- hl.exec_cmd("waybar & hyprpaper & firefox")
 end)
 
@@ -77,7 +81,7 @@ hl.env("HYPRCURSOR_SIZE", "24")
 --   },
 -- })
 
--- hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
+-- hl.permission("/usr/(bin|local/bin)/grim", "screencnew valueopy", "allow")
 -- hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
 -- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
 
@@ -110,7 +114,7 @@ hl.config({
 
     cursor = {
         no_hardware_cursors = true, -- prevent blinking cursor because of nvidia
-        enable_hyprcursor = false, -- prevent blinking cursor because of nvidia
+        enable_hyprcursor = false,  -- prevent blinking cursor because of nvidia
     },
 
     decoration = {
@@ -214,7 +218,7 @@ hl.config({
 
 hl.config({
     misc = {
-        force_default_wallpaper   = -1, -- Set to 0 or 1 to disable the anime mascot wallpapers
+        force_default_wallpaper   = -1,   -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo     = true, -- If true disables the random hyprland logo / anime girl background. :(
         disable_splash_rendering  = true, -- If true disables the random hyprland logo / anime girl background. :(
         always_follow_on_dnd      = true, -- prevent blinking cursor because of nvidia
